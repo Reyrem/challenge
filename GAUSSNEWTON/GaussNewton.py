@@ -12,12 +12,10 @@ from multiprocessing import Lock
 
 
 
-def readFiles(dataFile, sensFile):
-    df = pd.read_csv(dataFile)
-    df_sens = pd.read_csv(sensFile)
-    return df, df_sens
 
-df, df_sens = readFiles(dataFile ,sensFile)
+
+df = pd.read_csv(dataFile)
+df_sens = pd.read_csv(sensFile)
 sensorsTable = np.load('sensorsTableCorrected.npy')
 sensorsLoc = np.load('sensorsLoc.npy')
 sensorsDrift = np.load('sensorsDrift.npy')
