@@ -127,8 +127,9 @@ def localise(indexTrame, verbose=True):
       df_sample.latitude.iloc[indexTrame] = x[0]
       df_sample.longitude.iloc[indexTrame] = x[1]
       df_sample.longitude.iloc[indexTrame] = x[2]
-  except IndexError : print(indexTrame, df_sample.id.count())
-  
-  #return result.x
+  except IndexError : 
+      print(indexTrame, df_sample.id.count())
+      exportData()
+  return result.x
 
   
