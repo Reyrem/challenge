@@ -71,8 +71,8 @@ def exportData():
 
 #METHODE DE GAUSS NEWTON
 def localise(indexTrame, verbose=True):
-  measurements = readMeasurements(df.iloc[indexTrame]['measurements'])
-  baroAltitude = df.iloc[indexTrame]['baroAltitude']
+  measurements = readMeasurements(df['measurements'].iloc[indexTrame])
+  baroAltitude = df['baroAltitude'].iloc[indexTrame]
   k = 0
   strongerSignal = 0
   #we have to make sure the reference sensor is not broken
