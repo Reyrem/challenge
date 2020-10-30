@@ -10,13 +10,15 @@ if __name__ == '__main__':
     t0 = time.time()
    
     frames = np.load("frames.npy")
-
-    #pool = Pool(N)
-    #res = pool.map(MSE.localise, frames)
+    for i in frames:
+        if i> 3462719:
+            i-=1
+    pool = Pool(N)
+    res = pool.map(MSE.localise, frames)
     
-    #pool.close()
-    #pool.terminate()
+    pool.close()
+    pool.terminate()
     
-    #MSE.exportData()
+    MSE.exportData()
     print("TOTAL EXECUTION TIME : " + str(time.time() - t0))
     
