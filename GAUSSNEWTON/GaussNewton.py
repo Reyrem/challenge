@@ -12,7 +12,8 @@ from multiprocessing import Lock
 
 
 
-
+dataFile = 'round2_competition.csv'
+sensFile = 'round2_sensors.csv'
 
 df = pd.read_csv(dataFile)
 df_sens = pd.read_csv(sensFile)
