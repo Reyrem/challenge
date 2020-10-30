@@ -16,9 +16,9 @@ from multiprocessing import Lock
 dataFile = 'round2_competition.csv'
 sensFile = 'round2_sensors.csv'
 
-df = pd.read_csv(dataFile, sep=",")
+df = pd.read_csv(dataFile, engine='python', sep=",")
 print(df.iloc[0])
-df_sens = pd.read_csv(sensFile, sep=",")
+df_sens = pd.read_csv(sensFile, engine='python',  sep=",")
 sensorsTable = np.load('sensorsTableCorrected.npy')
 sensorsLoc = np.load('sensorsLoc.npy')
 sensorsDrift = np.load('sensorsDrift.npy')
