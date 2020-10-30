@@ -16,9 +16,9 @@ from multiprocessing import Lock
 dataFile = 'round2_competition.csv'
 sensFile = 'round2_sensors.csv'
 
-df = pd.read_csv(dataFile, sep=";")
+df = pd.read_csv(dataFile, sep=",")
 print(df.iloc[0])
-df_sens = pd.read_csv(sensFile, sep=";")
+df_sens = pd.read_csv(sensFile, sep=",")
 sensorsTable = np.load('sensorsTableCorrected.npy')
 sensorsLoc = np.load('sensorsLoc.npy')
 sensorsDrift = np.load('sensorsDrift.npy')
@@ -71,8 +71,8 @@ def exportData():
 
 #METHODE DE GAUSS NEWTON
 def localise(indexTrame, verbose=True):
-  measurements = readMeasurements(df['measurements'].iloc[indexTrame])
-  baroAltitude = df['baroAltitude'].iloc[indexTrame]
+  measurements = readMeasurements(df.iloc[indexTrame]['measurements'])
+  baroAltitude = df.iloc[indexTrame]['baroAltitude']
   k = 0
   strongerSignal = 0
   #we have to make sure the reference sensor is not broken
