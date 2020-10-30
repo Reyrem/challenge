@@ -23,7 +23,7 @@ sensorsLoc = np.load('sensorsLoc.npy')
 sensorsDrift = np.load('sensorsDrift.npy')
 nonLinearSensors = np.load("NonLinearSensors.npy")
 goodSensorsCorrectionFile = 'captorSynchroCOMPETITION_30_10.pkl'
-flux = open(path + goodSensorsCorrectionFile, 'rb')
+flux = open(goodSensorsCorrectionFile, 'rb')
 goodSensorsCorrection = pickle.load(flux)
 flux.close()
 
