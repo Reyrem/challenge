@@ -4,7 +4,7 @@ import time
 import pickle
 #from Constantes import *
 #from multiprocessing import Pool
-#import GaussNewton as MSE
+import GaussNewton as MSE
 
 if __name__ == '__main__':
     t0 = time.time()
