@@ -120,16 +120,16 @@ def localise(indexTrame, verbose=True):
   result = so.least_squares(delta, x, jac='3-point', args=arguments, ftol = 10**(-8), xtol = 10**(-8), loss='soft_l1', x_scale=(0.01, 0.01, 10), bounds=bnds)
   
 
-  try:
+  # try:
       #if verbose:
         #print(x)
         #print(result.x)
         #print(result.success)
         #print(result.message)
-      print(indexTrame)
-      df_sample.latitude.iloc[indexTrame] = x[0]
-      df_sample.longitude.iloc[indexTrame] = x[1]
-      df_sample.longitude.iloc[indexTrame] = x[2]
+  print(indexTrame)
+  df_sample.latitude.iloc[indexTrame] = x[0]
+  df_sample.longitude.iloc[indexTrame] = x[1]
+  df_sample.longitude.iloc[indexTrame] = x[2]
 
   #T'as pas le droit de faire ça
   # except IndexError : 
