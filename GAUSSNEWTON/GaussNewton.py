@@ -12,7 +12,7 @@ from multiprocessing import Lock
 
 
 
-
+lock = Lock()
 dataFile = 'round2_competition.csv'
 sensFile = 'round2_sensors.csv'
 
@@ -67,7 +67,8 @@ def delta(x, r, serials, l):
 
 
 def exportData():
-  df_sample.to_csv('RESULTS.csv', index=False)
+  #df_sample.to_csv(r'./RESULTS.csv', index=False)
+  pass
 
 #METHODE DE GAUSS NEWTON
 def localise(indexTrame, verbose=True):
@@ -117,19 +118,27 @@ def localise(indexTrame, verbose=True):
   arguments = (r, serials, l)
 
   result = so.least_squares(delta, x, jac='3-point', args=arguments, ftol = 10**(-8), xtol = 10**(-8), loss='soft_l1', x_scale=(0.01, 0.01, 10), bounds=bnds)
-  if verbose:
-    print(x)
-    print(result.x)
-    print(result.success)
-    print(result.message)
+  
 
   try:
+      #if verbose:
+        #print(x)
+        #print(result.x)
+        #print(result.success)
+        #print(result.message)
+      print(indexTrame)
       df_sample.latitude.iloc[indexTrame] = x[0]
       df_sample.longitude.iloc[indexTrame] = x[1]
       df_sample.longitude.iloc[indexTrame] = x[2]
-  except IndexError : 
-      print(indexTrame, df_sample.id.count())
-      exportData()
+
+  #T'as pas le droit de faire ça
+  # except IndexError : 
+  #     print("----------------------",indexTrame, df_sample.id.count(), "------------------------------------------")
+  #     lock.acquire()
+  #     try : 
+  #         exportData()
+  #     finally :
+  #         lock.release()
   return result.x
 
   
