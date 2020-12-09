@@ -23,17 +23,17 @@ sensFile = 'round2_sensors.csv'
 
 
 
-# def my_data_generator(fp):
-#   metadata = []
-#   for line in fp:
-#     data = line.strip().split(',')
-#     print(data)
-#     # if len(data) == 4:
-#     #   metadata = data
-#     # elif not metadata:
-#     #   raise ValueError("csv file did not start with metadata")
-#     # elif data:
-#     #   yield metadata + data
+def my_data_generator(fp):
+  metadata = []
+  for line in fp:
+    data = line.strip().split(',')
+    print(data)
+    # if len(data) == 4:
+    #   metadata = data
+    # elif not metadata:
+    #   raise ValueError("csv file did not start with metadata")
+    # elif data:
+    #   yield metadata + data
 
 # df = pd.DataFrame.from_records(my_data_generator(open('round2_competition.csv')))
 
