@@ -23,9 +23,14 @@ sensFile = 'round2_sensors.csv'
 
 #df = pd.read_csv(dataFile, engine='python', sep=",", error_bad_lines=False, quoting=csv.QUOTE_NONE)
 # df = pd.read_csv(dataFile, engine='python', sep=",", quoting=csv.QUOTE_NONE, error_bad_lines=False, encoding='utf-8')
-df = pd.read_csv(dataFile, engine='python', sep=",",error_bad_lines=False)
+try:
+  # df = pd.read_csv(dataFile, engine='python', sep=",",error_bad_lines=False)
+  #df = pd.read_csv(dataFile, engine='python', sep=",", error_bad_lines=False, quoting=csv.QUOTE_NONE)
+  #df = pd.read_csv(dataFile, engine='python', sep=",", quoting=csv.QUOTE_NONE, error_bad_lines=False, encoding='utf-8')
+  df = pd.read_csv(dataFile, engine='python', sep=",")
+except (parser.CParserError) as detail: print(detail)
 
-# df = pd.read_csv(dataFile, engine='python', sep=",")
+
 for i in range (1000) : print(df['measurements'].count())
 df_sens = pd.read_csv(sensFile, engine='python',  sep=",")
 sensorsTable = np.load('sensorsTableCorrected.npy')
@@ -38,9 +43,8 @@ goodSensorsCorrection = pickle.load(flux)
 flux.close()
 
 
-try:
+
   df_sample = pd.read_csv('round2_sample_empty.csv')
-except (parser.CParserError) as detail: print(detail)
 
 
 # def readFiles(path, dataFile, sensFile):
