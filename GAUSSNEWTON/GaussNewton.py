@@ -11,7 +11,7 @@ from multiprocessing import Pool
 from multiprocessing import Lock
 
 import csv
-
+from pandas.io import parser
 
 # from pandas.io import parser; try: your read_csv look for file f except (parser.CParserError) as detail: print f, detail
 
