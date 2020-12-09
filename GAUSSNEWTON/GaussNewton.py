@@ -26,7 +26,7 @@ try:
   # df = pd.read_csv(dataFile, engine='python', sep=",",error_bad_lines=False)
   #df = pd.read_csv(dataFile, engine='python', sep=",", error_bad_lines=False, quoting=csv.QUOTE_NONE)
   #df = pd.read_csv(dataFile, engine='python', sep=",", quoting=csv.QUOTE_NONE, error_bad_lines=False, encoding='utf-8')
-  df = pd.read_csv(dataFile, engine='python', sep=",")
+  df = pd.read_csv(dataFile, engine='python', sep=",",lineterminator='\n')
 except (CParserError) as detail : print(detail)
 
 
