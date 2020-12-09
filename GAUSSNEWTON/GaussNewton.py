@@ -72,8 +72,16 @@ def exportData():
 
 #METHODE DE GAUSS NEWTON
 def localise(indexTrame, verbose=True):
-  measurements = readMeasurements(df.iloc[indexTrame]['measurements'])
-  baroAltitude = df.iloc[indexTrame]['baroAltitude']
+  try:
+    measurements = readMeasurements(df.iloc[indexTrame]['measurements'])
+    baroAltitude = df.iloc[indexTrame]['baroAltitude']
+  except IndexError:
+    print(" ++++++++++++++++++++++++++++++ INDEXTRAME +++++++++++++++++++++++++++++++++++ ", indexTrame)
+    with open("frames_problematiques.txt","a") as prob:
+      prob.write("frame non traitee le indexTrame est out of bounds askip     :   ")
+      prob.write(str(indexTrame))
+      prob.write("\n\n\n")
+    return None
   k = 0
   strongerSignal = 0
   #we have to make sure the reference sensor is not broken
