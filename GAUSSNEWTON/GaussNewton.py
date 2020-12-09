@@ -10,13 +10,16 @@ from Utilitaires import *
 from multiprocessing import Pool
 from multiprocessing import Lock
 
+import csv
 
 
 lock = Lock()
 dataFile = 'round2_competition.csv'
 sensFile = 'round2_sensors.csv'
 
-df = pd.read_csv(dataFile, engine='python', sep=",", error_bad_lines=False)
+
+
+df = pd.read_csv(dataFile, engine='python', sep=",", error_bad_lines=False, quoting=csv.QUOTE_NONE)
 print(df.iloc[0])
 df_sens = pd.read_csv(sensFile, engine='python',  sep=",")
 sensorsTable = np.load('sensorsTableCorrected.npy')
@@ -29,6 +32,8 @@ goodSensorsCorrection = pickle.load(flux)
 flux.close()
 
 df_sample = pd.read_csv('round2_sample_empty.csv')
+
+
 
 # def readFiles(path, dataFile, sensFile):
 #     df = pd.read_csv(dataFile)
@@ -72,6 +77,8 @@ def exportData():
 
 #METHODE DE GAUSS NEWTON
 def localise(indexTrame, verbose=True):
+
+
   try:
     measurements = readMeasurements(df.iloc[indexTrame]['measurements'])
     baroAltitude = df.iloc[indexTrame]['baroAltitude']
@@ -82,6 +89,8 @@ def localise(indexTrame, verbose=True):
       prob.write(str(indexTrame))
       prob.write("\n\n\n")
     return None
+
+
   k = 0
   strongerSignal = 0
   #we have to make sure the reference sensor is not broken
