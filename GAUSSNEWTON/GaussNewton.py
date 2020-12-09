@@ -40,7 +40,7 @@ flux.close()
 
 try:
   df_sample = pd.read_csv('round2_sample_empty.csv')
-except (parser.CParserError) as detail: print  detail
+except (parser.CParserError) as detail: print(detail)
 
 
 # def readFiles(path, dataFile, sensFile):
