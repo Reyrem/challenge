@@ -77,23 +77,29 @@ def localise(indexTrame, verbose=True):
   k = 0
   strongerSignal = 0
   #we have to make sure the reference sensor is not broken
-  while (sensorsTable[int(measurements[k][0])] < 0):
+  while ((k < len(measurements)) and (sensorsTable[int(measurements[k][0])] < 0)):
     k += 1
 
-  l = int(measurements[k][0])
-  timeStampL = seconds(float(measurements[k][1]))
-  timeStampL = correctedTime(timeStampL, l)
-  if sensorsTable[l]==1:
-    timeStampL = correctedTimeGood(timeStampL, l)
-  strongerSensor = l
-
-  r = []
-  serials = []
-
   if k==len(measurements):
-    print("Localisation error")
+ 
+    print("---------------------------------- INDEXTRAME ----------------------------------", indexTrame)
+    with open("frames_problematiques.txt","a") as prob:
+      prob.write("frame Non traitée car il n'y a pas de capteur valide disponible     :   ")
+      prob.write(str(indexTrame))
+      prob.write("\n\n\n")
     return None
+
   else:
+    l = int(measurements[k][0])
+    timeStampL = seconds(float(measurements[k][1]))
+    timeStampL = correctedTime(timeStampL, l)
+    if sensorsTable[l]==1:
+      timeStampL = correctedTimeGood(timeStampL, l)
+    strongerSensor = l
+
+    r = []
+    serials = []
+
     for i in range(k+1, len(measurements)):
       si = int(measurements[i][0])
       timeStampI = seconds(float(measurements[i][1]))
@@ -133,8 +139,6 @@ def localise(indexTrame, verbose=True):
     with open("frames_problematiques.txt","a") as prob:
       prob.write("frame  :  ")
       prob.write(str(indexTrame))
-      prob.write(  '   ')
-      prob.write(str(df_sample.id.count()))
       prob.write("\n\n\n")
 
 
