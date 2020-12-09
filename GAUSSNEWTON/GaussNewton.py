@@ -20,6 +20,26 @@ sensFile = 'round2_sensors.csv'
 
 
 
+
+
+
+def my_data_generator(fp):
+  metadata = []
+  for line in fp:
+    data = line.strip().split(',')
+    print(data)
+    # if len(data) == 4:
+    #   metadata = data
+    # elif not metadata:
+    #   raise ValueError("csv file did not start with metadata")
+    # elif data:
+    #   yield metadata + data
+
+df = pd.DataFrame.from_records(my_data_generator(open('round2_competition.csv')))
+
+print(df)
+
+
 #df = pd.read_csv(dataFile, engine='python', sep=",", error_bad_lines=False, quoting=csv.QUOTE_NONE)
 # df = pd.read_csv(dataFile, engine='python', sep=",", quoting=csv.QUOTE_NONE, error_bad_lines=False, encoding='utf-8')
 
@@ -27,9 +47,9 @@ sensFile = 'round2_sensors.csv'
 #df = pd.read_csv(dataFile, engine='python', sep=",", error_bad_lines=False, quoting=csv.QUOTE_NONE)
 #df = pd.read_csv(dataFile, engine='python', sep=",", quoting=csv.QUOTE_NONE, error_bad_lines=False, encoding='utf-8')
 #df = pd.read_csv(dataFile, engine='python', sep=",")
-try:
-  df = pd.read_csv(dataFile, sep=",",lineterminator='\n')
-except pd.errors.ParserError as detail : print(detail) 
+# try:
+#   df = pd.read_csv(dataFile, sep=",",lineterminator='\n')
+# except pd.errors.ParserError as detail : print(detail) 
 
 for i in range (1000) : print(df['measurements'].count())
 df_sens = pd.read_csv(sensFile, engine='python',  sep=",")
