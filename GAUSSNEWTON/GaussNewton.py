@@ -11,7 +11,6 @@ from multiprocessing import Pool
 from multiprocessing import Lock
 
 import csv
-from pandas.io import parser
 
 # from pandas.io import parser; try: your read_csv look for file f except (parser.CParserError) as detail: print f, detail
 
@@ -28,7 +27,7 @@ try:
   #df = pd.read_csv(dataFile, engine='python', sep=",", error_bad_lines=False, quoting=csv.QUOTE_NONE)
   #df = pd.read_csv(dataFile, engine='python', sep=",", quoting=csv.QUOTE_NONE, error_bad_lines=False, encoding='utf-8')
   df = pd.read_csv(dataFile, engine='python', sep=",")
-except (parser.CParserError) as detail: print(detail)
+except (pd.parser.CParserError) as detail: print(detail)
 
 
 for i in range (1000) : print(df['measurements'].count())
