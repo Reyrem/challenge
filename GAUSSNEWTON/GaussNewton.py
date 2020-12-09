@@ -119,27 +119,34 @@ def localise(indexTrame, verbose=True):
 
   result = so.least_squares(delta, x, jac='3-point', args=arguments, ftol = 10**(-8), xtol = 10**(-8), loss='soft_l1', x_scale=(0.01, 0.01, 10), bounds=bnds)
   
+  lock.acquire()
+  with open("frames_corrigees.txt","a") as fichier:
+    fichier.write(str(indexTrame)+";")
+    fichier.write(str(x[0])+";")
+    fichier.write(str(x[1])+";")
+    fichier.write(str(x[2])+"\n")
+  lock.release()
 
-  try:
-      #if verbose:
-        #print(x)
-        #print(result.x)
-        #print(result.success)
-        #print(result.message)
-    print(indexTrame,"---------->", result.x)
-    df_sample.latitude.iloc[indexTrame] = x[0]
-    df_sample.longitude.iloc[indexTrame] = x[1]
-    df_sample.longitude.iloc[indexTrame] = x[2]
+  # try:
+  #     #if verbose:
+  #       #print(x)
+  #       #print(result.x)
+  #       #print(result.success)
+  #       #print(result.message)
+  #   print(indexTrame,"---------->", result.x)
+  #   df_sample.latitude.iloc[indexTrame] = x[0]
+  #   df_sample.longitude.iloc[indexTrame] = x[1]
+  #   df_sample.longitude.iloc[indexTrame] = x[2]
 
-  #T'as pas le droit de faire ça
-  except IndexError : 
-    print("----------------------",indexTrame, df_sample.id.count(), "------------------------------------------")
-    with open("frames_problematiques.txt","a") as fichier:
-      fichier.write("frame  :  ")
-      fichier.write(str(indexTrame))
-      fichier.write(  '   ')
-      fichier.write(str(df_sample.id.count()))
-      fichier.write("\n\n\n")
+  # #T'as pas le droit de faire ça
+  # except IndexError : 
+  #   print("----------------------",indexTrame, df_sample.id.count(), "------------------------------------------")
+  #   with open("frames_problematiques.txt","a") as fichier:
+  #     fichier.write("frame  :  ")
+  #     fichier.write(str(indexTrame))
+  #     fichier.write(  '   ')
+  #     fichier.write(str(df_sample.id.count()))
+  #     fichier.write("\n\n\n")
 
   #     lock.acquire()
   #     try : 
