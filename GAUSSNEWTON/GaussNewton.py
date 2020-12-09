@@ -67,8 +67,8 @@ def delta(x, r, serials, l):
 
 
 def exportData():
-  #df_sample.to_csv(r'./RESULTS.csv', index=False)
-  pass
+  df_sample.to_csv(r'./RESULTS_9-12-0830.csv', index=False)
+  
 
 #METHODE DE GAUSS NEWTON
 def localise(indexTrame, verbose=True):
@@ -126,7 +126,7 @@ def localise(indexTrame, verbose=True):
         #print(result.x)
         #print(result.success)
         #print(result.message)
-  print(indexTrame)
+  print(indexTrame,"---------->" result.x)
   df_sample.latitude.iloc[indexTrame] = x[0]
   df_sample.longitude.iloc[indexTrame] = x[1]
   df_sample.longitude.iloc[indexTrame] = x[2]
