@@ -126,7 +126,7 @@ def localise(indexTrame, verbose=True):
         #print(result.x)
         #print(result.success)
         #print(result.message)
-  print(indexTrame,"---------->" result.x)
+  print(indexTrame,"---------->", result.x)
   df_sample.latitude.iloc[indexTrame] = x[0]
   df_sample.longitude.iloc[indexTrame] = x[1]
   df_sample.longitude.iloc[indexTrame] = x[2]
