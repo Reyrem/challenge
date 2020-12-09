@@ -13,6 +13,8 @@ from multiprocessing import Lock
 import csv
 
 
+# from pandas.io import parser; try: your read_csv look for file f except (parser.CParserError) as detail: print f, detail
+
 lock = Lock()
 dataFile = 'round2_competition.csv'
 sensFile = 'round2_sensors.csv'
@@ -35,8 +37,10 @@ flux = open(goodSensorsCorrectionFile, 'rb')
 goodSensorsCorrection = pickle.load(flux)
 flux.close()
 
-df_sample = pd.read_csv('round2_sample_empty.csv')
 
+try:
+  df_sample = pd.read_csv('round2_sample_empty.csv')
+except (parser.CParserError) as detail: print f, detail
 
 
 # def readFiles(path, dataFile, sensFile):
