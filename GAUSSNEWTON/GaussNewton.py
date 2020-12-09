@@ -119,14 +119,25 @@ def localise(indexTrame, verbose=True):
 
   result = so.least_squares(delta, x, jac='3-point', args=arguments, ftol = 10**(-8), xtol = 10**(-8), loss='soft_l1', x_scale=(0.01, 0.01, 10), bounds=bnds)
   
-  lock.acquire()
-  with open("frames_corrigees.txt","a") as fichier:
-    fichier.write(str(indexTrame)+";")
-    fichier.write(str(x[0])+";")
-    fichier.write(str(x[1])+";")
-    fichier.write(str(x[2])+"\n")
-  lock.release()
-  print(indexTrame)
+  try :
+    lock.acquire()
+    with open("frames_corrigees.txt","a") as fichier:
+      fichier.write(str(indexTrame)+";")
+      fichier.write(str(x[0])+";")
+      fichier.write(str(x[1])+";")
+      fichier.write(str(x[2])+"\n")
+    lock.release()
+    print(indexTrame)
+  except IndexError :
+    print("---------------------------------- INDEXTRAME", indexTrame)
+    with open("frames_problematiques.txt","a") as prob:
+      prob.write("frame  :  ")
+      prob.write(str(indexTrame))
+      prob.write(  '   ')
+      prob.write(str(df_sample.id.count()))
+      prob.write("\n\n\n")
+
+
   # try:
   #     #if verbose:
   #       #print(x)
