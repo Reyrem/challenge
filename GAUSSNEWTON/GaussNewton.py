@@ -136,9 +136,9 @@ def localise(indexTrame, verbose=True):
     print("----------------------",indexTrame, df_sample.id.count(), "------------------------------------------")
     with open("frames_problematiques.txt","a") as fichier:
       fichier.write("frame  :  ")
-      fichier.write(indexTrame)
+      fichier.write(str(indexTrame))
       fichier.write(  '   ')
-      fichier.write(df_sample.id.count())
+      fichier.write(str(df_sample.id.count()))
       fichier.write("\n\n\n")
 
   #     lock.acquire()
@@ -153,6 +153,10 @@ def localise(indexTrame, verbose=True):
 #Là ou y'a tous les nouveaux trucs
   #~/retourCode-8-12-20/challenge/GAUSSNEWTON
 
+
+# ---------------------- 1527155 632932 ------------------------------------------
+# ---------------------- 2497593 632932 ------------------------------------------
+# ---------------------- 3074110 632932 ------------------------------------------
 
 
 
