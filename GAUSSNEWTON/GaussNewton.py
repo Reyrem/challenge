@@ -126,7 +126,7 @@ def localise(indexTrame, verbose=True):
     fichier.write(str(x[1])+";")
     fichier.write(str(x[2])+"\n")
   lock.release()
-
+  print(indexTrame)
   # try:
   #     #if verbose:
   #       #print(x)
