@@ -35,7 +35,7 @@ def my_data_generator(fp):
     # elif data:
     #   yield metadata + data
 
-# df = pd.DataFrame.from_records(my_data_generator(open('round2_competition.csv')))
+df = pd.DataFrame.from_records(my_data_generator(open('round2_competition.csv')))
 
 # print(df)
 
@@ -44,7 +44,7 @@ def my_data_generator(fp):
 # df = pd.read_csv(dataFile, engine='python', sep=",", quoting=csv.QUOTE_NONE, error_bad_lines=False, encoding='utf-8')
 cols = pd.read_csv(dataFile, nrows=1).columns
 
-df = pd.read_csv(dataFile, engine='python', sep=",",  error_bad_lines=False, usecols=cols, encoding='utf-8')
+#df = pd.read_csv(dataFile, engine='python', sep=",",  error_bad_lines=False, usecols=cols, encoding='utf-8')
 
 
 # df = pd.read_csv(dataFile, engine='python', sep=",",error_bad_lines=False)
