@@ -10,10 +10,10 @@ if __name__ == '__main__':
     t0 = time.time()
    
     frames = np.load("frames.npy")
-    for i in frames:
-        if i> 3462719:
-            frames[i]=frames[i-1] #y'avait juste une vieille modif de i mais c'était plus ça le truc 
-            
+    for i, indexframe in enumerate(frames):
+        if indexframe> 3462719:
+            frames[i] -= 1 #y'avait juste une vieille modif de i mais c'était plus ça le truc 
+
     pool = Pool(N)
     res = pool.map(MSE.localise, frames)
     

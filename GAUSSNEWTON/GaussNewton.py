@@ -142,3 +142,11 @@ def localise(indexTrame, verbose=True):
   return result.x
 
   
+
+#Là ou y'a tous les nouveaux trucs
+  #~/retourCode-8-12-20/challenge/GAUSSNEWTON
+
+
+
+
+
