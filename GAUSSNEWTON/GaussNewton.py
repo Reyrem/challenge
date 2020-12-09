@@ -41,7 +41,7 @@ sensFile = 'round2_sensors.csv'
 
 
 #df = pd.read_csv(dataFile, engine='python', sep=",", error_bad_lines=False, quoting=csv.QUOTE_NONE)
-# df = pd.read_csv(dataFile, engine='python', sep=",", quoting=csv.QUOTE_NONE, error_bad_lines=False, encoding='utf-8')
+df = pd.read_csv(dataFile, engine='python', sep=",", quoting=csv.QUOTE_NONE, error_bad_lines=False, encoding='utf-8')
 
 # df = pd.read_csv(dataFile, engine='python', sep=",",error_bad_lines=False)
 #df = pd.read_csv(dataFile, engine='python', sep=",", error_bad_lines=False, quoting=csv.QUOTE_NONE)
@@ -51,7 +51,7 @@ sensFile = 'round2_sensors.csv'
 #   df = pd.read_csv(dataFile, sep=",",lineterminator='\n')
 # except pd.errors.ParserError as detail : print(detail) 
 
-df = pd.read_csv(dataFile, engine='python', sep=",",warn_bad_lines=False)
+#df = pd.read_csv(dataFile, engine='python', sep=",",warn_bad_lines=False)
 
 for i in range (1000) : print(df['measurements'].count())
 df_sens = pd.read_csv(sensFile, engine='python',  sep=",")
