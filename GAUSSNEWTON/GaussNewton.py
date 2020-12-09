@@ -23,19 +23,19 @@ sensFile = 'round2_sensors.csv'
 
 
 
-def my_data_generator(fp):
-  metadata = []
-  for line in fp:
-    data = line.strip().split(',')
-    print(data)
-    # if len(data) == 4:
-    #   metadata = data
-    # elif not metadata:
-    #   raise ValueError("csv file did not start with metadata")
-    # elif data:
-    #   yield metadata + data
+# def my_data_generator(fp):
+#   metadata = []
+#   for line in fp:
+#     data = line.strip().split(',')
+#     print(data)
+#     # if len(data) == 4:
+#     #   metadata = data
+#     # elif not metadata:
+#     #   raise ValueError("csv file did not start with metadata")
+#     # elif data:
+#     #   yield metadata + data
 
-df = pd.DataFrame.from_records(my_data_generator(open('round2_competition.csv')))
+# df = pd.DataFrame.from_records(my_data_generator(open('round2_competition.csv')))
 
 # print(df)
 
@@ -44,7 +44,7 @@ df = pd.DataFrame.from_records(my_data_generator(open('round2_competition.csv'))
 # df = pd.read_csv(dataFile, engine='python', sep=",", quoting=csv.QUOTE_NONE, error_bad_lines=False, encoding='utf-8')
 cols = pd.read_csv(dataFile, nrows=1).columns
 
-#df = pd.read_csv(dataFile, engine='python', sep=",",  error_bad_lines=False, usecols=cols, encoding='utf-8')
+df = pd.read_csv(dataFile, engine='python', sep=",",  error_bad_lines=False, usecols=8, encoding='utf-8')
 
 
 # df = pd.read_csv(dataFile, engine='python', sep=",",error_bad_lines=False)
