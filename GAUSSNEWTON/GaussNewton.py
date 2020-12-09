@@ -135,7 +135,11 @@ def localise(indexTrame, verbose=True):
   except IndexError : 
     print("----------------------",indexTrame, df_sample.id.count(), "------------------------------------------")
     with open("frames_problematiques.txt","a") as fichier:
-      fichier.write(indexTrame, df_sample.id.count())
+      fichier.write("frame  :  ")
+      fichier.write(indexTrame)
+      fichier.write(  '   ')
+      fichier.write(df_sample.id.count())
+      fichier.write("\n\n\n")
 
   #     lock.acquire()
   #     try : 
