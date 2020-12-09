@@ -42,9 +42,9 @@ sensFile = 'round2_sensors.csv'
 
 #df = pd.read_csv(dataFile, engine='python', sep=",", error_bad_lines=False, quoting=csv.QUOTE_NONE)
 # df = pd.read_csv(dataFile, engine='python', sep=",", quoting=csv.QUOTE_NONE, error_bad_lines=False, encoding='utf-8')
+cols = pd.read_csv(file, nrows=1).columns
 
-
-df = pd.read_csv(dataFile, engine='python', sep=",",  error_bad_lines=False, encoding='iso-8859-1')
+df = pd.read_csv(dataFile, engine='python', sep=",",  error_bad_lines=False, usecols=cols, encoding='utf-8')
 
 
 # df = pd.read_csv(dataFile, engine='python', sep=",",error_bad_lines=False)
