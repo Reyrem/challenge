@@ -17,6 +17,7 @@ import csv
 lock = Lock()
 dataFile = 'round2_competition.csv'
 sensFile = 'round2_sensors.csv'
+sampleFile = 'round2_sample_empty.csv'
 
 
 
@@ -45,7 +46,7 @@ sensFile = 'round2_sensors.csv'
 #cols = pd.read_csv(dataFile, nrows=1).columns
 
 df = pd.read_csv(dataFile,  sep=",",  error_bad_lines=False)
-
+df_sample = pd.read_csv(sampleFile, sep=",")
 
 # df = pd.read_csv(dataFile, engine='python', sep=",",error_bad_lines=False)
 #df = pd.read_csv(dataFile, engine='python', sep=",", error_bad_lines=False, quoting=csv.QUOTE_NONE)
@@ -75,7 +76,7 @@ flux.close()
 
 
 
-df_sample = pd.read_csv('round2_sample_empty.csv')
+
 
 
 # def readFiles(path, dataFile, sensFile):
@@ -114,8 +115,8 @@ def delta(x, r, serials, l):
   return res
 
 
-def exportData():
-  df_sample.to_csv(r'./RESULTS_9-12-0830.csv', index=False)
+# def exportData():
+#   df_sample.to_csv(r'./RESULTS_9-12-0830.csv', index=False)
   
 
 #METHODE DE GAUSS NEWTON
