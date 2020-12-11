@@ -194,8 +194,9 @@ def localise(indexTrame, verbose=True):
     lock.release()
     
     num_count+=1
-    if num_count%200==0:
+    if num_count%100==0:
       print(num_count/num_max)
+      
     #print(indexTrame)
   except IndexError :
     print("---------------------------------- INDEXTRAME", indexTrame)
