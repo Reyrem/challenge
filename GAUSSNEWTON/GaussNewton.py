@@ -59,8 +59,8 @@ df = pd.read_csv(dataFile,  sep=",",  error_bad_lines=False)
 
 
 
-for i in range (1000) : print(df.shape)
-
+num_max = df_sample.shape[0]
+num_count = 0
 
 df_sens = pd.read_csv(sensFile, engine='python',  sep=",")
 sensorsTable = np.load('sensorsTableCorrected.npy')
@@ -192,6 +192,10 @@ def localise(indexTrame, verbose=True):
       fichier.write(str(x[1])+";")
       fichier.write(str(x[2])+"\n")
     lock.release()
+    
+    num_count+=1
+    if num_count%200==0:
+      print(num_count/num_max)
     #print(indexTrame)
   except IndexError :
     print("---------------------------------- INDEXTRAME", indexTrame)
