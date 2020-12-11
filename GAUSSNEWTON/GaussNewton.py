@@ -44,7 +44,7 @@ sensFile = 'round2_sensors.csv'
 # df = pd.read_csv(dataFile, engine='python', sep=",", quoting=csv.QUOTE_NONE, error_bad_lines=False, encoding='utf-8')
 #cols = pd.read_csv(dataFile, nrows=1).columns
 
-df = pd.read_csv(dataFile, engine='python', sep=",",  error_bad_lines=False, encoding='utf-8')
+df = pd.read_csv(dataFile,  sep=",",  error_bad_lines=False)
 
 
 # df = pd.read_csv(dataFile, engine='python', sep=",",error_bad_lines=False)
@@ -59,7 +59,7 @@ df = pd.read_csv(dataFile, engine='python', sep=",",  error_bad_lines=False, enc
 
 
 
-#for i in range (1000) : print(df['measurements'].count())
+for i in range (1000) : print(df.shape)
 
 
 df_sens = pd.read_csv(sensFile, engine='python',  sep=",")
@@ -192,7 +192,7 @@ def localise(indexTrame, verbose=True):
       fichier.write(str(x[1])+";")
       fichier.write(str(x[2])+"\n")
     lock.release()
-    print(indexTrame)
+    #print(indexTrame)
   except IndexError :
     print("---------------------------------- INDEXTRAME", indexTrame)
     with open("frames_problematiques.txt","a") as prob:
