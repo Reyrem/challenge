@@ -59,10 +59,9 @@ df_sample = pd.read_csv(sampleFile, sep=",")
 #df = pd.read_csv(dataFile, engine='python', sep=",",warn_bad_lines=False)
 
 
-
+num_count = 0
 num_max = df_sample.shape[0]
 
-num_count = 0
 
 df_sens = pd.read_csv(sensFile, engine='python',  sep=",")
 sensorsTable = np.load('sensorsTableCorrected.npy')
@@ -185,7 +184,11 @@ def localise(indexTrame, verbose=True):
   arguments = (r, serials, l)
 
   result = so.least_squares(delta, x, jac='3-point', args=arguments, ftol = 10**(-8), xtol = 10**(-8), loss='soft_l1', x_scale=(0.01, 0.01, 10), bounds=bnds)
-  
+  num_count+=1
+  if num_count%100==0:
+    print(num_count/num_max *100)
+
+
   try :
     lock.acquire()
     with open("frames_corrigees.txt","a") as fichier:
@@ -195,10 +198,7 @@ def localise(indexTrame, verbose=True):
       fichier.write(str(x[2])+"\n")
     lock.release()
     
-    num_count+=1
-    if num_count%100==0:
-      print(num_count/num_max *100)
-
+    
     #print(indexTrame)
   except IndexError :
     print("---------------------------------- INDEXTRAME", indexTrame)
