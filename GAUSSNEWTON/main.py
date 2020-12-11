@@ -11,9 +11,7 @@ if __name__ == '__main__':
    
     frames = np.load("frames.npy")
     for i, indexframe in enumerate(frames):
-        if indexframe> 3462719:
-            frames[i] -= 1 #y'avait juste une vieille modif de i mais c'était plus ça le truc 
-
+        
     pool = Pool(N)
     res = pool.map(MSE.localise, frames)
     
