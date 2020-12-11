@@ -60,6 +60,7 @@ df = pd.read_csv(dataFile,  sep=",",  error_bad_lines=False)
 
 
 num_max = df_sample.shape[0]
+
 num_count = 0
 
 df_sens = pd.read_csv(sensFile, engine='python',  sep=",")
@@ -195,8 +196,8 @@ def localise(indexTrame, verbose=True):
     
     num_count+=1
     if num_count%100==0:
-      print(num_count/num_max)
-      
+      print(num_count/num_max *100)
+
     #print(indexTrame)
   except IndexError :
     print("---------------------------------- INDEXTRAME", indexTrame)
