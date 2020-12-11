@@ -10,7 +10,7 @@ if __name__ == '__main__':
     t0 = time.time()
    
     frames = np.load("frames.npy")
-    for i, indexframe in enumerate(frames):
+    
         
     pool = Pool(N)
     res = pool.map(MSE.localise, frames)
