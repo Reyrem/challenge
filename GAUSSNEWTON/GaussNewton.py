@@ -114,7 +114,8 @@ def delta(x, r, serials, l):
   return res
 
 
-# def exportData():
+def exportData():
+  print("+++++++++++++++++++++++++++++  PROBLEME TERMINE  +++++++++++++++++++++++++++++")
 #   df_sample.to_csv(r'./RESULTS_9-12-0830.csv', index=False)
   
 
@@ -193,9 +194,10 @@ def localise(indexTrame, verbose=True):
     lock.acquire()
     with open("frames_corrigees.txt","a") as fichier:
       fichier.write(str(indexTrame)+";")
-      fichier.write(str(x[0])+";")
-      fichier.write(str(x[1])+";")
-      fichier.write(str(x[2])+"\n")
+      fichier.write(str(result.x[0])+";")
+      fichier.write(str(result.x[1])+";")
+      fichier.write(str(result.x[2])+";")
+      fichier.write(str(result.cost)+"\n")
     lock.release()
     
     
